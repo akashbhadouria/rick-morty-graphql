@@ -1,7 +1,10 @@
 ![GitHub - jaydenseric/graphql-react: A GraphQL client for React using modern  context and hooks APIs that is lightweight (< 4 kB) but powerful; the first  Relay and Apollo alternative with server side rendering.](https://repository-images.githubusercontent.com/119938939/31e4ae00-61c6-11e9-9225-ddb41dd76d8c)  
  
 
-## What is GraphQL?
+## How to Write a GraphQL Query
+### A beginner’s guide to writing your first GraphQL query
+
+### What is GraphQL?
 
 GraphQL is a query language for our API, it technically exists as a layer in between your frontend and backend. The client which is a frontend will use this query language to request data from the API, and GraphQL will take that into consideration, then it will decide what to return or what to do based on that request.  
   
@@ -42,7 +45,7 @@ With GraphQL you don’t need to specify what kind of HTTP request you are makin
 
   
 
-## Differences between a GraphQL API and [REST API](https://aws.amazon.com/what-is/restful-api/)?
+### Differences between a GraphQL API and [REST API](https://aws.amazon.com/what-is/restful-api/)?
 
   
 
@@ -74,7 +77,7 @@ But now you could be thinking about the scenario,
 where we have to make only 1 REST API call, what will happen then?  
 In that case, depending on the request REST can be faster than GraphQL and vice versa.
 
-## **Data Types in GraphQL**
+### **Data Types in GraphQL**
 
 1.  **Int**: A signed 32‐bit integer. 
 2.  **Float**: A signed double-precision floating-point value.
@@ -157,7 +160,7 @@ To create our Application, we will be using [Rick and Morty API](https://rickand
 
 We will be using React.js for developing our Client side application, to learn more about React.js, you can visit [official React docs](https://react.dev/).
 
-## **Connecting a GraphQL server to a React.js Application**
+### **Connecting a GraphQL server to a React.js Application**
 
 To create a React.js app a modern way is to use Vite/Parcel, but for learning purposes, we will be using CRA (Create React App).
 To create a react app using CRA, open your terminal and write  
@@ -210,7 +213,7 @@ Now we need to connect the Application to the GraphQL, we need ApolloProvider wh
 
 The Client is telling us, this is the endpoint and thus we want to make query to this endpoint, and the ApolloProvider which is wrapping your App, is taking the client as props and making that interpretation.
 
-## Writing our first GraphQL Query
+### Writing our first GraphQL Query
  
 ![](https://lh6.googleusercontent.com/JC0NHZohwXNnuHHJiEzvXY-bVyUjY6Haqh55G99iHQXIpcmZJ3NSReR-WWdo6POCaSBuhlDkeOiIP8o-JBptu_P-B_OoxtmBx1PNzgqecuYW0kBgQkniCbPV_6rvZRauPdh_yRMaJzH-kuzPQdzeyg)
 
@@ -235,7 +238,7 @@ Go to the folders structure and inside src directory, create another directory/f
 
 Now after the refresh, you will observe the empty screen in your react app.
 
-## Querying the GraphQL API response in our React.js App.
+### Querying the GraphQL API response in our React.js App.
 
 We need the [useQuery](https://www.apollographql.com/tutorials/lift-off-part1/10-the-usequery-hook) hook in our React.js Application.
 
@@ -317,10 +320,10 @@ So let’s destructure and console this to see their true values.
 Before that go to your `App.js` file and import this component and later check the logs.
 
 ![](https://lh4.googleusercontent.com/Lk6O0soHJPuRtQ8kOGhFaf9XbtlfwqMBsGxpfSwp0XRGhCsqIu1eSe645fUBA3V1cyDvxL-rpFj97-ogyWXFLdlAIpoA5eQSWMoxaZ8Ixiv0GJsLyHWOf7Ys1BTSWZuBbfWVvylhkYNHGHXn2ILHzA)  
-App.js file
+*App.js file*
 
 ![](https://lh4.googleusercontent.com/SWTJmuVdNPlrjEiFzG7k49TyHVJN-vUbdZEpb65lgwE56L8rExlpdEpLjwFhxZESJIDXSHXTf-qYfc55MCqrlPOTZ741vTrldEP-NMk82SygLbrDuSjsCHpFU1d7-D4O23z7Qs3B2HKLdunJvQST5w)
-Console View
+*Console View*
 
 **Mapping data in our component**
 
@@ -371,7 +374,7 @@ Adding some basic styling results us with,![](https://lh6.googleusercontent.com/
 
 So now, we have learnt how to query a GraphQL API in our React.js App and display the results on the browser.
 
-## Creating a Query Hook
+### Creating a Query Hook
 
 **What is a hook?**
 
@@ -434,7 +437,7 @@ So, our custom hook looks like this.
     export  default  CharactersList;
 
 **
-## Query with variables
+### Query with variables
 
 Now imagine if we want to get redirected to a new page when we click on a peculiar character and want more details about the character. So how would we do that?
 
@@ -600,9 +603,6 @@ Now complete the code as shown below for the `CharacterInfo.js` page and we will
     
     export  default  CharacterInfo;
 
-  
-
-  
 
 ![](https://lh4.googleusercontent.com/febnx0p-Lwm8ukFTX6bugLB6gTCxPDG8LQXi0ao_3UAUnWSuBoi5ol09nAlpSNcQ4jgT2P2vFvJc4XudXPJmWR3M1zdLRF9BSdiBqEztMqA3Yci4nshzDqW1LBxrhhpUO5936LdghS7P6CcH1XMMRw)Yayy! We did it again together and now we can dynamically navigate to any character page.  
   
@@ -622,11 +622,6 @@ I’m attaching the **[Github](https://github.com/akashbhadouria/rick-morty-grap
 
 
 Thanks for being here with me, hope to see you soon again. Keep learning keep growing! Hasta La Vista! 😍💖🙋🏻‍♂️
-
-
-
-
-
 
 _______________________________________________________________________________________________________________________________________
 

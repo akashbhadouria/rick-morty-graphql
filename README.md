@@ -197,7 +197,7 @@ This is the client which is going to have all the information about our GraphQL 
 Now we need to connect the Application to the GraphQL, we need ApolloProvider
 
 which we have already imported. We will wrap our app using this like shown below and will supply it with a prop called client.
-
+```
 constclient = newApolloClient({
 
 uri:"https://rickandmortyapi.com/graphql",
@@ -221,6 +221,7 @@ root.render(
 \</React.StrictMode\>
 
 );
+```
 
 The Client is telling us, this is the endpoint and thus we want to make query to this endpoint, and the ApolloProvider which is wrapping your App is taking client as props and making that interpretation.
 
@@ -269,7 +270,7 @@ The way we can add a GraphQL query is by utilising **gpl** which we also get fro
 So outside of a component, we give our [GraphQL query](https://graphql.org/learn/queries/) a name, and the naming convention is to name it in All uppercase letters in the string. Remember to pass the query which you need to execute in backticks **` `**.
 
 Now paste this query inside your useQuery Hook.
-
+```
 // Naming our query
 
 constGET\_CHARACTERS = gpl`
@@ -365,7 +366,7 @@ console.log(error, loading, data);
 return\<\>\</\>;
 
 };
-
+```
 Before that go to your App.js file and import this component and later check the logs.
 
 ![](RackMultipart20230329-1-vffia2_html_49ef69384c9071d0.png)
@@ -377,7 +378,7 @@ Before that go to your App.js file and import this component and later check the
 **Console**
 
 **Mapping data in our component**
-
+```
 **import**** React ****from****"react" ****;**
 
 **import**  **{**  **useQuery**** , **** gql **** } **** from ****"@apollo/client"**** ;**
@@ -441,6 +442,7 @@ Before that go to your App.js file and import this component and later check the
 **};**
 
 **export**** default ****CharactersList**** ;**
+```
 
 **Appending Name and Image in our component**
 
@@ -464,6 +466,7 @@ Why should we create custom hooks?
 
 So, our custom hook looks like this.
 
+```
 import { useQuery, gql } from"@apollo/client";
 
 // Naming our query
@@ -541,6 +544,7 @@ return (
 };
 
 exportdefaultCharactersList;
+```
 
 **Query with variables**
 
@@ -554,6 +558,7 @@ Let's create the above mentioned functionality (when you click on a card, it red
 
 Install [react-router-dom](https://reactrouter.com/en/main) and also wrap the application with \<BrowserRouter\> in the index.js file, as shown below.
 
+```
 root.render(
 
 \<React.StrictMode\>
@@ -571,22 +576,23 @@ root.render(
 \</React.StrictMode\>
 
 );
+```
 
 Now navigate to the App.js file and also check if react-router is installed or not. If not just open your terminal and write **npm i react-router**
 
 We will create Routes using React-Router-Dom.Before creating routes, first of all import these 2 lines in your index.js at the top.
-
+```
 import { BrowserRouter } from"react-router-dom";
 
 import { Route, Routes } from"react-router";
-
+```
 Now we want to create 2 routes,
 
 1. The home directory route, where our home page is present and it displays all the characters.
 2. Second will navigate us to a page about the character info, when we click on a particular character using its ":_ **id.** _
 
 Go to the index.js and modify the code inside render() as shown below,
-
+```
 root.render(
 
 \<React.StrictMode\>
@@ -610,7 +616,7 @@ root.render(
 \</React.StrictMode\>
 
 );
-
+```
 Now, let's create an additional hook for displaying info about a particular character as we did before. The query for this particular query is as mentioned below.
 
 ![](RackMultipart20230329-1-vffia2_html_3ed22ab4c89e4cc1.png)
@@ -618,7 +624,7 @@ Now, let's create an additional hook for displaying info about a particular char
 Now you can see the response from the query as well.
 
 To create a new customHook with name **useCharacterInfo,** go to the src/hooks folder and create a new file called, useCharacterInfo.
-
+```
 import { useQuery, gql } from"@apollo/client";
 
 // Naming our query
@@ -666,13 +672,13 @@ return { error, loading, data };
 };
 
 exportdefaultuseCharacterInfo;
-
+```
 Here id is a variable entity, so to pass variables in the query. We have put the id inside the variables, which is justified.
 
 Now import this hook in your **CharacterInfo.js** component and let's try to render the info of any character when it gets redirected to this page.
 
 To dynamically redirect to a character page modify the CharacterList component and replace div with Link. Do not forget to import the Link as well, as shown below.
-
+```
 importReactfrom"react";
 
 importuseCharactersfrom"../hooks/useCharacters";
@@ -796,7 +802,7 @@ return (
 };
 
 exportdefaultCharacterInfo;
-
+```
 ![](RackMultipart20230329-1-vffia2_html_6a6de71df1301628.png) Yayy! We did it again together and now we can dynamically navigate to any character page.
 
  So concluding this here, we learn what a query is and how to write a basic query, also the query with variables such as id. Now you are set to deep dive into the subject and also create something of your own as well.

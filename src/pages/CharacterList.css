@@ -2,4 +2,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    max-width: 80%;
+    margin-inline: auto;
+}
+
+.Link {
+    text-decoration: none;
+    color: inherit;
 }

@@ -23,8 +23,8 @@ root.render(
     <BrowserRouter>
       <ApolloProvider client={client}>
         <Routes>
-          <Route path="/" component={<CharactersList />} />
-          <Route path="/:id" component={<CharacterInfo />} />
+          <Route path="/" element={<CharactersList />} />
+          <Route path="/:id" element={<CharacterInfo />} />
         </Routes>
       </ApolloProvider>
     </BrowserRouter>

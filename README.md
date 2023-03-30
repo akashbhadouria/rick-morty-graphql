@@ -27,7 +27,7 @@ There is an interesting distinction you can observe, Technically in GraphQL ther
 
 **Query** - Think of query in this way, let's say you are in the Frontend and want to make a request for some sort of data, so, you are going to make a query and all of the logic will stay inside this query. GraphQL query is the equivalent of a GET request in REST.
 
-						       (OR)  
+						        (OR)  
 
 Queries are used to fetch data from a server. If you want to get data from your API, you call a query.
 
@@ -63,13 +63,13 @@ Whereas in the case of GraphQL, there will only be 1 end point, i.e. - `/graphql
 
 ![](https://lh6.googleusercontent.com/eD7wWnIcC4jnPk76_D6beSbfraOvNgwfhAmBl-QfHctRzK_aU5URBHTOqvHfXj0F23hUlMKuX_B41hWPqGysaDpl0FfyUY4XZYqlty7otlRjLmqBsMuO09dfHbPJloc7EFQ6ANgS7MBSyEbFQaCf)![](https://lh3.googleusercontent.com/S8KgZmoTnL9zkS01gsDZn_GyAAemEklSP4vVn3mE4pO5F-gAbV2hzNehC-RBI4NP-FbtguzyVkCikaIIaCTTevw71F8jrS3mH5AztB8METxMAPEqFbMcd-jj57U0uqmRSNtgUXn9EWDIDrfTW7Fa)![](https://lh3.googleusercontent.com/xEhYD-QcLf6Fq6oRCxDZfeTHm6W0cArfo37--9bzIhJORv5bQgMAi3LQ3HPE0TIOmpMNAsrwQBlOfKL0XUGI37wi5sfHq3eiL0X5i59jbgH6LHAkjBfZR-rXEoo4id6Y-AQc-V_d0aJvu3RoXSS0)
 
-In the REST structure, we either over fetch the data to show a particular set of information which we need to display on the frontend or we just underfetch making multiple API calls and then display parts of data.  
-Fetching the data from the backend and loading it on the frontend is 1 of the most expensive operations, so using GraphQL we can overcome this issue. We will see this further in the blog.
+In the REST structure, we either over fetch the data to show a particular set of information which we need to display on the frontend, or we just underfetch making multiple API calls and then display parts of data.  
+Fetching the data from the backend and loading it on the frontend is 1 of the most expensive operations! so using GraphQL, we can overcome this issue. We will see this further in the blog.
 
 3.  ***GraphQL can be faster***
 
-This is a very subjective thing as many REST API’s are highly performant. But mostly when there is a scenario where we have to make multiple API calls and each endpoint has some delay associated with it (Asynchronous behaviour) to receive the data, in comparison to the [GraphQL](https://graphql.org/) where we need to send the query/mutation(request) to one single endpoint, here GraphQL supersedes REST.  
-But now you could be thinking about the scenario,
+This is a very subjective thing as many REST API’s are highly performant. But mostly when there is a scenario where we have to make multiple API calls and each endpoint has some delay associated with it (Asynchronous behaviour) to receive the data, in comparison to the [GraphQL](https://graphql.org/), where we need to send the query/mutation(request) to one single endpoint, here GraphQL supersedes REST.  
+But now you would be thinking about the scenario,
 
 where we have to make only 1 REST API call, what will happen then?  
 In that case, depending on the request REST can be faster than GraphQL and vice versa.
@@ -92,19 +92,19 @@ You want to create these data types as well to store such values, how would you 
   
 
     type User {
-    			id: ID,
-    			name: String,
-    			age: Int,
-    			height: Float,
-    			isMarried: Boolean,
-    			friends: [User],
-    			videoPosted: [Video]
+    		id: ID,
+    		name: String,
+    		age: Int,
+    		height: Float,
+    		isMarried: Boolean,
+    		friends: [User],
+    		videoPosted: [Video]
     }
 
     type Video {
-    			Id: ID,
-    			title: String,
-    			Description: String
+    		Id: ID,
+    		title: String,
+    		Description: String
     }
 
 Generally we do not make every field required, but there are times when we make the field required. So to make any field value type required or a field value of a particular type, we use !(exclamation mark).
@@ -150,7 +150,6 @@ Eg - The below query will be requesting 2 things,
   ```
 
   
-
 So now you have got a basic idea regarding GraphQL API. Now we will understand how our GraphQL server interacts with our Client side application, where our client side application is a React.js App.
 
 To create our Application, we will be using [Rick and Morty API](https://rickandmortyapi.com/graphql) open source GraphQL API.
@@ -159,8 +158,8 @@ We will be using React.js for developing our Client side application, to learn m
 
 ### **Connecting a GraphQL server to a React.js Application**
 
-To create a React.js app a modern way is to use Vite/Parcel, but for learning purposes, we will be using CRA (Create React App).
-To create a react app using CRA, open your terminal and write  
+To create a React.js app, a modern and recommended way is to use Vite/Parcel, but for learning purposes, we will be using CRA (Create React App).
+To create a react app using CRA, open your terminal and write,  
   
 
     npx create-react-app rick-morty
@@ -182,23 +181,24 @@ Copy paste this on the top of `index.js` file.
     } from "@apollo/client";
 
 Now we’ll initialize the ApolloClient, by passing an object in its constructor, that is a configuration object to be precise!  
-So now again, navigate to the `index.js` file and add the following lines below the line where all the import statements are done importing.
+So now, navigate to the `index.js` file and add the following lines below, the line where all the import statements are done importing.
 
     const client = new  ApolloClient({
     		uri:  "https://rickandmortyapi.com/graphql",
     		cache:  new  InMemoryCache(),
     });
 
-This is the client which is going to have, all the information about our GraphQL server. A very good thing GraphQL does is [caching](https://graphql.org/learn/caching/). It means, if a request is sent before it will `cache/memoize` it and later when the same request is done, instead of again sending request to the server, it’ll call the cached result and will return it.
+This is the client which is going to have, all the information about our GraphQL server. An awesome thing GraphQL does is [caching](https://graphql.org/learn/caching/). It means, if a request is sent before it will `cache/memoize` it and later when the same request is sent, instead of again sending request to the server, it’ll call the cached result and will return it.
 
-Now we need to connect the Application to the GraphQL, we need ApolloProvider which we have already imported. We will wrap our app using this like shown below and will supply it with a prop called client.
+Now we need to connect the Application to the GraphQL endpoint, we need ApolloProvider which we have already imported. We will wrap our App using this like shown below and will supply it with a prop called client.
 
     const  client = new  ApolloClient({
     		uri:  "https://rickandmortyapi.com/graphql",
     		cache:  new  InMemoryCache(),
     });
 
-
+Here we are using rick and morty graphql api as an uri and InMemoryChache for caching purposes.
+	
     const  root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
     		<React.StrictMode>
@@ -218,7 +218,7 @@ This is our query, where we are requesting characters or rick and morty, and it 
 
 ![](https://lh3.googleusercontent.com/cV8ZJFGiwd4cG_UhL6j1vYguhB3vFVWZNaegHVsVeVmNitmaSRa4hkT2Xnx5LdI_qjP0ozCni6lCAIge9YytRXpM_TtE36I6oIUbUP6NQFo7Mp-PYQR9VDSUCy2r4zQENplh6T9Wgs29Ma1OqjN-VQ)
 
-This is the response returned by the graphql endpoint. Here you can observe tat every record has only the requested parameters.
+This is the response returned by the graphql endpoint. Here you can observe that every record has only the requested parameters.
 
 You can try writing this query on a [GraphQL Playground](https://rickandmortyapi.com/graphql) and observe the response for this API.
 So now, we will be iterating over the response and appending it in each card. Now run your application by writing the below command on your terminal. 
@@ -248,37 +248,37 @@ First, we need to `import useQuery` from the @apollo/client package (we're alrea
 
 So after importing the statement, we will get something back from the useQuery hook, we’ll see it later. For now just imagine we are going to get something back.![](https://lh3.googleusercontent.com/viT1TAc_jctEPCU2JQUKonssSpnCgYh3Cc-wX9kDqFx0H46prmr3vyYKHBCudUxflLHTBBgnHy1O517TofA05mAZKGJDjydW0QBisVTRV8soR787HQag1gBDY_Y-0VhOafaib6kemgTSwwKW27KU9g)
 
-The way we can add a GraphQL query is by utilising  gpl  which we also get from “@apollo/client” as well.
+The way we can add a GraphQL query is by utilising gql which we also get from “@apollo/client” as well.
 
 So outside of a component, we give our [GraphQL query](https://graphql.org/learn/queries/) a name, and the naming convention is to name it in All uppercase letters in the string. Remember to pass the query which you need to execute in backticks ` `.
 
 Now paste this query inside your `useQuery` Hook.
 
     // Naming our query  
-    const  GET_CHARACTERS = gpl`
+    const  GET_CHARACTERS = gql`
     query {
     	characters {
-    		results {
-	    		id
-	    		name
-	    		gender
-	    		image
-    		}
+    	   results {
+	    	id
+	    	name
+	    	gender
+	    	image
+    	   }
     	}
     }`;
 
 **Naming our query**
 
     // Naming our query
-    const  GET_CHARACTERS = gpl`
+    const  GET_CHARACTERS = gql`
 	    query {
-		    characters {
-			    results {
-				    id
-				    name
-				    gender
-				    image
-			  }
+		 characters {
+		    results {
+			id
+			name
+			gender
+			image
+	          }
 	     }
     }`;
 
@@ -330,12 +330,12 @@ Before that go to your `App.js` file and import this component and later check t
     // Naming our query
     const  GET_CHARACTERS = gql`
 	    query {
-		    characters {
-			    results {
-				    id
-				    name
-				    gender
-				    image
+		 characters {
+			 results {
+				id
+				 name
+				 gender
+				 image
 		     }
 	     }
     }`;
@@ -388,12 +388,12 @@ So, our custom hook looks like this.
     
     const  GET_CHARACTERS = gql`
 	    query {
-		    characters {
-			    results {
-				    id
-				    name
-				    gender
-				    image
+		  characters {
+			  results {
+			       id
+			       name
+			       gender
+			       image
 		    }
 	    }
     }`;
@@ -476,8 +476,8 @@ Go to the `index.js` and modify the code inside `render()` as shown below,
 	    <BrowserRouter>
 	    <ApolloProvider  client={client}>
 	    <Routes>
-	    <Route  path="/"  element={<CharactersList  />}  />
-	    <Route  path="/:id"  element={<CharacterInfo  />}  />
+	    <Route path="/"  element={<CharactersList  />}  />
+	    <Route path="/:id"  element={<CharacterInfo  />}  />
 	    </Routes>
 	    </ApolloProvider>
 	    </BrowserRouter>
@@ -501,25 +501,25 @@ To create a new **customHook** with name **useCharacterInfo**, go to the src/hoo
 		    name
 		    id
 		    image
-			    episode {
-				    name
-				    episode
-			    }
-		  }
+			episode {
+			     name
+			     episode
+		       }
+		}
     }`;
 
   
 
     const  useCharacterInfo = (id) => {
     const { error, loading, data } = useQuery(GET_CHARACTER_INFO, {
-    variables: {
-	    id,
-	    },
+    	variables: {
+		    id,
+	    	},
 	    });
 	return { error, loading, data };
     };
 
-    export  default  useCharacterInfo;
+    export default  useCharacterInfo;
 
 Here id is a variable entity, so to pass variables in the query. We have put the id inside the variables, which is justified.
 
@@ -538,11 +538,11 @@ To dynamically redirect to a character page modify the `CharacterList` component
 	    <div  className="CharacterList">
 		    {data?.characters?.results?.map((character) => {
 		    return (
-			    <Link  to={`/${character.id}`}  key={character.id}  className="Link">
-			    <img  src={character?.image}  />
+			    <Link to={`/${character.id}`}  key={character.id}  className="Link">
+			    <img src={character?.image}  />
 			    <h2>{character?.name}</h2>
 			    </Link>
-		    );
+		    	);
 		    })}
 	    </div>
 	   );
@@ -555,50 +555,50 @@ Now use [useParams](https://reactrouter.com/en/main/hooks/use-params) hooks to r
 
     import  React  from  "react";
     import { useParams } from  "react-router";
-    import  useCharacterInfo  from  "../hooks/useCharacterInfo";
-    import  "./CharacterInfo.css";
+    import useCharacterInfo  from  "../hooks/useCharacterInfo";
+    import "./CharacterInfo.css";
     
-    const  CharacterInfo = () => {
+    const CharacterInfo = () => {
     const { id } = useParams();
     const { data, loading, error } = useCharacterInfo(id);
 
 Now complete the code as shown below for the `CharacterInfo.js` page and we will be fine to display the individual character page.
 
-    import  React  from  "react";
-    import { useParams } from  "react-router";
-    import  useCharacterInfo  from  "../hooks/useCharacterInfo";
+    import React from "react";
+    import { useParams } from "react-router";
+    import useCharacterInfo from  "../hooks/useCharacterInfo";
     import "./CharacterInfo.css";
     
-    const  CharacterInfo = () => {
+    const CharacterInfo = () => {
     const { id } = useParams();
     const { data, loading, error } = useCharacterInfo(id);
     if (error) {
 	    return  <div>Something went wrong.</div>;
     }
-    if (loading) {
+    if(loading) {
 	    return  <div>Loading...</div>;
     }
     return (
 	    <div className="CharacterInfo">
-	    <img src={data?.character?.image} width={750}  height={750}  />
-	    <div className="Character-content">
-	    <h1>{data?.character?.name}</h1>
-	    <p>{data?.character?.gender}</p>
-	    <div  className="Character-episode">
-	    {data?.character?.episode?.map((episode) => {
-	    <div key={episode.episode}>
-	    <h3>
-	    {episode.name} - <b>{episode.episode}</b>
-	    </h3>
-	    </div>;
+		    <img src={data?.character?.image} width={750}  height={750}  />
+		    <div className="Character-content">
+		    <h1>{data?.character?.name}</h1>
+		    <p>{data?.character?.gender}</p>
+		    <div  className="Character-episode">
+		    {data?.character?.episode?.map((episode) => {
+		    <div key={episode.episode}>
+			    <h3>
+			    {episode.name} - <b>{episode.episode}</b>
+			    </h3>
+	    	    </div>;
 	    })}
-	    </div>
+	    	</div>
 	  </div>
     </div>
 	    );
     };
     
-    export  default  CharacterInfo;
+    export default CharacterInfo;
 
 
 ![](https://lh4.googleusercontent.com/febnx0p-Lwm8ukFTX6bugLB6gTCxPDG8LQXi0ao_3UAUnWSuBoi5ol09nAlpSNcQ4jgT2P2vFvJc4XudXPJmWR3M1zdLRF9BSdiBqEztMqA3Yci4nshzDqW1LBxrhhpUO5936LdghS7P6CcH1XMMRw)Yayy! We did it again together and now we can dynamically navigate to any character page.  

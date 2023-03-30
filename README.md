@@ -1,18 +1,22 @@
 ![GitHub - jaydenseric/graphql-react: A GraphQL client for React using modern  context and hooks APIs that is lightweight (< 4 kB) but powerful; the first  Relay and Apollo alternative with server side rendering.](https://repository-images.githubusercontent.com/119938939/31e4ae00-61c6-11e9-9225-ddb41dd76d8c)  
  
 
-## How to Write a GraphQL Query
-### A beginner’s guide to writing your first GraphQL query
+# How to Write a GraphQL Query
+## A beginner’s guide to writing your first GraphQL query
 
 ### What is GraphQL?
 
-GraphQL is a query language for our API, it technically exists as a layer in between your frontend and backend. The client which is a frontend will use this query language to request data from the API, and GraphQL will take that into consideration, then it will decide what to return or what to do based on that request.  
-  
-Unlike SQL or other Database languages, the GraphQL exists in between the frontend and the backend whereas other query languages exist in between Backend and Databases to query records.  
-  
-This also means that GraphQL is not tied to any specific Database, instead it queries your API’s and not your Database.  
-  
-I know this is a bit confusing for you right now if you are reading about GraphQL for the 1st time, but believe me we will make it easy and you will get it! 🤯  
+GraphQL is a query language for APIs. It is, in fact, a layer that sits between your frontend and backend. Here, the client—a frontend—will use this query language to request data from the API, and GraphQL will take that into account before deciding what to return or how to proceed. It was developed by Facebook and open-sourced in 2015.
+
+GraphQL resides between the frontend and the backend, unlike SQL or other database languages, whereas other query languages exist between the databases and the backend to query records.
+
+This means that GraphQL just queries your APIs and is not bound to any particular database.
+
+If you are reading about GraphQL for the first time, I get that it could sound a little complex, but believe me, just keep reading this article and I'll simplify it for you!
+
+What distinguishes GraphQL from a typical API request?
+
+Technically speaking, there are two different sorts of queries in GraphQL, which is a noteworthy distinction to observe (also called types): 🤯  
   
 How does GraphQL differ from a normal API request?  
   
@@ -21,13 +25,9 @@ There is an interesting distinction you can observe, Technically in GraphQL ther
 -   *Mutation*
     
 
-**Query** - Think of query in this way, say if you are in the Frontend and want to make a request for some sort of data, you are going to make a query. And all of the logic will stay inside the query.GraphQL query is the equivalent of GET request in REST.
+**Query** - Think of query in this way, let's say you are in the Frontend and want to make a request for some sort of data, so, you are going to make a query and all of the logic will stay inside this query. GraphQL query is the equivalent of a GET request in REST.
 
-  
-
-(OR)
-
-  
+						       (OR)  
 
 Queries are used to fetch data from a server. If you want to get data from your API, you call a query.
 
@@ -38,17 +38,14 @@ Queries are used to fetch data from a server. If you want to get data from your 
 Mutations are used to modify or write server side data. If you want to update data in your API, you call a mutation.
 
   
-  
-  
 
 With GraphQL you don’t need to specify what kind of HTTP request you are making from the frontend. You just have to specify if you are making a query or mutation and GraphQL will handle it. So it removes extra burden from your shoulders about what kind of requests or methods you are using.
 
+
+
+### What differentiates a GraphQL API from a [REST API](https://aws.amazon.com/what-is/restful-api/)?
+
   
-
-### Differences between a GraphQL API and [REST API](https://aws.amazon.com/what-is/restful-api/)?
-
-  
-
 1.  ***One Endpoint*** -
 Unlike REST API where we create multiple endpoints for different operations, in graphQL we will send query/mutation (requests) to a single endpoint.  
 

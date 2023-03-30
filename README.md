@@ -25,21 +25,21 @@ There is an interesting distinction you can observe, Technically in GraphQL ther
 -   *Mutation*
     
 
-**Query** - Think of query in this way, let's say you are in the Frontend and want to make a request for some sort of data, so, you are going to make a query and all of the logic will stay inside this query. GraphQL query is the equivalent of a GET request in REST.
+**Query** - Think of the query in this way, let's say you are in the Frontend and want to send a request for some sort of data, so! you are going to make a query and all of the logic will stay inside this query. GraphQL query is the equivalent of a GET request in REST.
 
-						        (OR)  
+						          	(OR)  
 
 Queries are used to fetch data from a server. If you want to get data from your API, you call a query.
 
-**Mutation**  - A mutation in a GraphQL operation that allows you to insert new data or modify the already existing data on the server-side. GraphQL mutations are the equivalent of POST, PUT, PATCH & DELETE requests in REST.
+**Mutation**  - A mutation in a GraphQL operation that allows you to insert new data or modify the already existing data on the server side. GraphQL mutations are the equivalent of POST, PUT, PATCH & DELETE requests in REST.
 
-							(OR)
+							  	(OR)
 
 Mutations are used to modify or write server side data. If you want to update data in your API, you call a mutation.
 
   
 
-With GraphQL you don’t need to specify what kind of HTTP request you are making from the frontend. You just have to specify if you are making a query or mutation and GraphQL will handle it. So it removes extra burden from your shoulders about what kind of requests or methods you are using.
+With GraphQL you don’t need to specify what kind of HTTP request you are making from the frontend. You just have to specify if you are making a query or mutation and GraphQL will handle it. So it removes the extra burden from your shoulders about what kind of requests or methods you are using.
 
 
 
@@ -57,18 +57,18 @@ Imagine a social media platform like Facebook where a single request hits multip
     
     /posts - Endpoint to fetch their posts on social media.
 
-Whereas in the case of GraphQL, there will only be 1 end point, i.e. - `/graphql`, where all *`query/mutations(requests)`* will be sent.
+Whereas in the case of GraphQL, there will only be 1 endpoint, i.e. - `/graphql`, where all *`query/mutations(requests)`* will be sent.
 
 2.  ***Overfetching / Underfetching*** -
 
 ![](https://lh6.googleusercontent.com/eD7wWnIcC4jnPk76_D6beSbfraOvNgwfhAmBl-QfHctRzK_aU5URBHTOqvHfXj0F23hUlMKuX_B41hWPqGysaDpl0FfyUY4XZYqlty7otlRjLmqBsMuO09dfHbPJloc7EFQ6ANgS7MBSyEbFQaCf)![](https://lh3.googleusercontent.com/S8KgZmoTnL9zkS01gsDZn_GyAAemEklSP4vVn3mE4pO5F-gAbV2hzNehC-RBI4NP-FbtguzyVkCikaIIaCTTevw71F8jrS3mH5AztB8METxMAPEqFbMcd-jj57U0uqmRSNtgUXn9EWDIDrfTW7Fa)![](https://lh3.googleusercontent.com/xEhYD-QcLf6Fq6oRCxDZfeTHm6W0cArfo37--9bzIhJORv5bQgMAi3LQ3HPE0TIOmpMNAsrwQBlOfKL0XUGI37wi5sfHq3eiL0X5i59jbgH6LHAkjBfZR-rXEoo4id6Y-AQc-V_d0aJvu3RoXSS0)
 
-In the REST structure, we either over fetch the data to show a particular set of information which we need to display on the frontend, or we just underfetch making multiple API calls and then display parts of data.  
+In the REST structure, we either overfetch the data to show a particular set of information that we need to display on the frontend, or we just under fetch making multiple API calls and then display parts of data.  
 Fetching the data from the backend and loading it on the frontend is 1 of the most expensive operations! so using GraphQL, we can overcome this issue. We will see this further in the blog.
 
 3.  ***GraphQL can be faster***
 
-This is a very subjective thing as many REST API’s are highly performant. But mostly when there is a scenario where we have to make multiple API calls and each endpoint has some delay associated with it (Asynchronous behaviour) to receive the data, in comparison to the [GraphQL](https://graphql.org/), where we need to send the query/mutation(request) to one single endpoint, here GraphQL supersedes REST.  
+This is a very subjective thing as many REST APIs are highly performant. But mostly when there is a scenario where we have to make multiple API calls and each endpoint has some delay associated with it (Asynchronous behavior) to receive the data, in comparison to the [GraphQL](https://graphql.org/), where we need to send the query/mutation(request) to one single endpoint, here GraphQL supersedes REST.  
 But now you would be thinking about the scenario,
 
 where we have to make only 1 REST API call, what will happen then?  
@@ -81,7 +81,7 @@ In that case, depending on the request REST can be faster than GraphQL and vice 
 3.  **String**: A UTF‐8 character sequence.
 4.  **Boolean**: true or false.
     
-5.  **ID**: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialised in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
+5.  **ID**: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache. The ID type is serialized in the same way as a String; however, defining it as an ID signifies that it is not intended to be human‐readable.
 
 There are 5 kinds of [Data types](https://graphql.org/learn/schema/#gatsby-focus-wrapper) in GraphQL. But you can create custom data types as well using these.  
   
@@ -107,7 +107,7 @@ You want to create these data types as well to store such values, how would you 
     		Description: String
     }
 
-Generally we do not make every field required, but there are times when we make the field required. So to make any field value type required or a field value of a particular type, we use !(exclamation mark).
+Generally, we do not make every field required, but there are times when we make the field required. So to make any field value type required or a field value of a particular type, we use !(exclamation mark).
 
     type User {
     		id: ID!,
@@ -119,7 +119,7 @@ Generally we do not make every field required, but there are times when we make 
     		videoPosted: [Video!]
     }
 
-In the above example we have made the type of the values required for different fields. Now let’s understand `friends: [User!]!,` this line.  
+In the above example, we have made the type of values required for different fields. Now let’s understand `friends: [User!]!,` this line.  
 Here we are making the array type of friends User, required, if in case friends exist, also we are making the array required by adding [User]! Line.
 
 
@@ -132,7 +132,7 @@ Now you’re understanding the gist of how [GraphQL](https://graphql.org/learn/)
 
   
 
-Every GraphQL API must have a schema and the schema isn’t as same as the Database schema, it’s just a schema which will define all the data that will exist inside the API.  
+Every GraphQL API must have a schema and the schema isn’t as same as the Database schema, it’s just a schema that will define all the data that will exist inside the API.  
   
 Every GraphQL schema will have a root type called query and inside of the query will have a list of all queries which you want to make from the frontend to request data from the API.
 
@@ -150,11 +150,11 @@ Eg - The below query will be requesting 2 things,
   ```
 
   
-So now you have got a basic idea regarding GraphQL API. Now we will understand how our GraphQL server interacts with our Client side application, where our client side application is a React.js App.
+So now you have got a basic idea regarding GraphQL API. Now we will understand how our GraphQL server interacts with our Client-side application, where our client-side application is a React.js App.
 
-To create our Application, we will be using [Rick and Morty API](https://rickandmortyapi.com/graphql) open source GraphQL API.
+To create our Application, we will be using [Rick and Morty API](https://rickandmortyapi.com/graphql) open-source GraphQL API.
 
-We will be using React.js for developing our Client side application, to learn more about React.js, you can visit [official React docs](https://react.dev/).
+We will be using React.js for developing our Client-side application, to learn more about React.js, you can visit [official React docs](https://react.dev/).
 
 ### **Connecting a GraphQL server to a React.js Application**
 
@@ -164,14 +164,14 @@ To create a react app using CRA, open your terminal and write,
 
     npx create-react-app rick-morty
 
-After creating the basic React.js app, we will be connecting our [GraphQL](https://graphql.org/) Endpoint using [Apollo Client](https://www.apollographql.com/docs/react/). There are a lot of frameworks available which can be used in place of Apollo, but we will be using Apollo Client as by far it is most widely used.
+After creating the basic React.js app, we will be connecting our [GraphQL](https://graphql.org/) Endpoint using [Apollo Client](https://www.apollographql.com/docs/react/). There are a lot of frameworks available which can be used in place of Apollo, but we will be using Apollo Client as by far it is the most widely used.
 
-Go to your terminal and copy paste this command to [setup Apollo client](https://www.apollographql.com/docs/react/get-started)
+Go to your terminal and copy and paste this command to [setup Apollo client](https://www.apollographql.com/docs/react/get-started)
 
 >  npm install @apollo/client graphql
 
 Now our dependencies are set up, we can now initialize an ApolloClient instance. Remember this! The root of our react.js app directory is in the index.js file. So navigate to the index.js file and import the symbols we need from `@apollo/client.`
-Copy paste this on the top of `index.js` file.
+Copy and paste this on the top of the `index.js` file.
 
     import {
     	ApolloClient,
@@ -188,7 +188,7 @@ So now, navigate to the `index.js` file and add the following lines below, the l
     		cache:  new  InMemoryCache(),
     });
 
-This is the client which is going to have, all the information about our GraphQL server. An awesome thing GraphQL does is [caching](https://graphql.org/learn/caching/). It means, if a request is sent before it will `cache/memoize` it and later when the same request is sent, instead of again sending request to the server, it’ll call the cached result and will return it.
+This is the client which is going to have, all the information about our GraphQL server. An awesome thing GraphQL does is [caching](https://graphql.org/learn/caching/). It means, if a request is sent before it will `cache/memoize` it and later when the same request is sent, instead of again sending a request to the server, it’ll call the cached result and will return it.
 
 Now we need to connect the Application to the GraphQL endpoint, we need ApolloProvider which we have already imported. We will wrap our App using this like shown below and will supply it with a prop called client.
 
@@ -208,7 +208,7 @@ Here we are using rick and morty graphql api as an uri and InMemoryChache for ca
     		</React.StrictMode>
     );
 
-The Client is telling us, this is the endpoint and thus we want to make query to this endpoint, and the ApolloProvider which is wrapping your App, is taking the client as props and making that interpretation.
+The Client is telling us, this is the endpoint and thus we want to make a query to this endpoint, and the ApolloProvider which is wrapping your App, is taking the client as props and making that interpretation.
 
 ### Writing our first GraphQL Query
  
@@ -229,7 +229,7 @@ Go to the folders structure and inside src directory, create another directory/f
 
 ![](https://lh3.googleusercontent.com/zegKYwJ73Je0uB5zf-3lVBgVSX1hR-uC70LATNvFou5PRoheH6SB4zh4_pVGgDYWZY5MjHjUnkp1cLlxzNjsRD4LBjSekAkEzQYEK5MsXszji38LC17-x8ccF74OlfYSEcpZ0-XDQjXZziZRe0haVw)  
 
-**Note - Remove all the boiler plate code from App.css and index.css. Apart from this, remove the header from App.js.**
+**Note - Remove all the boilerplate code from App.css and index.css. Apart from this, remove the header from App.js.**
 
 ![](https://lh4.googleusercontent.com/044meW0VPVamWvvnGW-W6v9t4Fh_ncZi3R6NdHn77yST46i7hLdvxjnvDgeP5yqRD95t9F7TlNatmAzG5FjKCztHUMUXPSbbPa6YCTsvJzvbpCghljbTGquC1EnxSjlyuxnfoNL388-zeytmDZy0Zg)
 
@@ -240,17 +240,17 @@ Now after the refresh, you will observe the empty screen in your react app.
 We need the [useQuery](https://www.apollographql.com/tutorials/lift-off-part1/10-the-usequery-hook) hook in our React.js Application.
 
 **Why do we need useQuery hook?**
-The useQuery hook is a primary API which is required to execute our query in React Application. We run a query within a React component by calling [useQuery](https://www.apollographql.com/tutorials/lift-off-part1/10-the-usequery-hook) and passing it our GraphQL query string.
+The useQuery hook is a primary API that is required to execute our query in React Application. We run a query within a React component by calling [useQuery](https://www.apollographql.com/tutorials/lift-off-part1/10-the-usequery-hook) and passing it our GraphQL query string.
 
 First, we need to `import useQuery` from the @apollo/client package (we're already importing gql):
 
 > `import { useQuery, gql } from "@apollo/client";`
 
-So after importing the statement, we will get something back from the useQuery hook, we’ll see it later. For now just imagine we are going to get something back.![](https://lh3.googleusercontent.com/viT1TAc_jctEPCU2JQUKonssSpnCgYh3Cc-wX9kDqFx0H46prmr3vyYKHBCudUxflLHTBBgnHy1O517TofA05mAZKGJDjydW0QBisVTRV8soR787HQag1gBDY_Y-0VhOafaib6kemgTSwwKW27KU9g)
+So after importing the statement, we will get something back from the useQuery hook, we’ll see it later. For now, just imagine we are going to get something back.![](https://lh3.googleusercontent.com/viT1TAc_jctEPCU2JQUKonssSpnCgYh3Cc-wX9kDqFx0H46prmr3vyYKHBCudUxflLHTBBgnHy1O517TofA05mAZKGJDjydW0QBisVTRV8soR787HQag1gBDY_Y-0VhOafaib6kemgTSwwKW27KU9g)
 
-The way we can add a GraphQL query is by utilising gql which we also get from “@apollo/client” as well.
+The way we can add a GraphQL query is by utilizing gql which we also get from “@apollo/client” as well.
 
-So outside of a component, we give our [GraphQL query](https://graphql.org/learn/queries/) a name, and the naming convention is to name it in All uppercase letters in the string. Remember to pass the query which you need to execute in backticks ` `.
+So outside of a component, we give our [GraphQL query](https://graphql.org/learn/queries/) a name, and the naming convention is to name it in All uppercase letters in the string. Remember to pass the query which you need to execute in backticks` `.
 
 Now paste this query inside your `useQuery` Hook.
 
@@ -375,7 +375,7 @@ So now, we have learnt how to query a GraphQL API in our React.js App and displa
 
 **What is a hook?**
 
--   At the end of the day hook is nothing more than a function which can be called anywhere possible.
+-   At the end of the day, the hook is nothing more than a function that can be called anywhere possible.
 
 **Why should we create custom hooks?**
 
@@ -433,7 +433,6 @@ So, our custom hook looks like this.
        
     export  default  CharactersList;
 
-**
 ### Query with variables
 
 Now imagine if we want to get redirected to a new page when we click on a peculiar character and want more details about the character. So how would we do that?
@@ -442,21 +441,22 @@ Now imagine if we want to get redirected to a new page when we click on a peculi
 
 So this is how you would [query](https://rickandmortyapi.com/graphql) for singular character information.
 
-Let’s create the above mentioned functionality (when you click on a card, it redirects you to a new page).
+Let’s create the above-mentioned functionality (when you click on a card, it redirects you to a new page).
 
 Install [react-router-dom](https://reactrouter.com/en/main) and also wrap the application with <BrowserRouter> in the `index.js` file, as shown below.
 
     root.render(
     	<React.StrictMode>
     	<BrowserRouter>
-    	<ApolloProvider  client={client}>
-    	<App  />
+    	<ApolloProvider client={client}>
+    	<App />
     	</ApolloProvider>
     	</BrowserRouter>
     	</React.StrictMode>
     );
 
-Now navigate to the App.js file and also check if react-router is installed or not. If not just open your terminal and write npm i react-router
+Now navigate to the App.js file and also check if react-router is installed or not. If not just open your terminal and write 
+`npm i react-router`
 
 We will create Routes using React-Router-Dom.Before creating routes, first of all import these 2 lines in your index.js at the top.
 
@@ -467,17 +467,17 @@ We will create Routes using React-Router-Dom.Before creating routes, first of al
 
 Now we want to create 2 routes,
 1.  The home directory route, where our home page is present and it displays all the characters.
-2.  Second will navigate us to a page about the character info, when we click on a particular character using its **“:id"**.
+2.  Second will navigate us to a page about the character info when we click on a particular character using its **“:id"**.
 
 Go to the `index.js` and modify the code inside `render()` as shown below,
 
     root.render(
 	    <React.StrictMode>
 	    <BrowserRouter>
-	    <ApolloProvider  client={client}>
+	    <ApolloProvider client={client}>
 	    <Routes>
-	    <Route path="/"  element={<CharactersList  />}  />
-	    <Route path="/:id"  element={<CharacterInfo  />}  />
+	    <Route path="/" element={<CharactersList  />}  />
+	    <Route path="/:id" element={<CharacterInfo  />}  />
 	    </Routes>
 	    </ApolloProvider>
 	    </BrowserRouter>
@@ -611,7 +611,7 @@ Just try to do what we have done till now and all your doubts will be cleared.
 I’m attaching the **[Github](https://github.com/akashbhadouria/rick-morty-graphql.git)** repository for your reference.
 
 **References**
- - [Github Repository](https://github.com/akashbhadouria/rick-morty-graphql.git)
+ - [GitHub Repository](https://github.com/akashbhadouria/rick-morty-graphql.git)
  - [GraphQl Docs](https://graphql.org/)
  - [UseQuery](https://www.apollographql.com/docs/react/data/queries/)
  - [React Router V6](https://reactrouter.com/en/main/start/overview)
